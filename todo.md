@@ -1,0 +1,47 @@
+TODO:
+- [x] Configure CMake for dependency-free C++ and CUDA builds.
+- [ ] Add CUDA error checking and device initialization.
+- [ ] Implement RAII host and GPU memory buffers.
+- [ ] Implement contiguous tensor metadata with shape, strides, dtype, and device.
+- [ ] Implement simple CPU tensor operations as correctness references.
+- [ ] Implement host-to-device and device-to-host tensor transfers.
+- [ ] Implement a naive CUDA elementwise-add kernel.
+- [ ] Implement a naive CUDA elementwise-multiply kernel.
+- [ ] Implement a naive CUDA matrix-multiplication kernel.
+- [ ] Implement CUDA row-reduction kernels for sum, mean, and variance.
+- [ ] Implement CUDA embedding lookup.
+- [ ] Implement CUDA LayerNorm.
+- [ ] Implement CUDA GELU.
+- [ ] Implement numerically stable CUDA softmax.
+- [ ] Compare every CUDA operation against its CPU implementation.
+- [ ] Implement byte-level tokenization using token IDs `0-255`.
+- [ ] Implement text-file loading and sequential training batches.
+- [ ] Implement token and learned positional embeddings.
+- [ ] Implement linear layers using matrix multiplication and bias addition.
+- [ ] Implement single-head causal self-attention.
+- [ ] Verify that causal attention cannot read future tokens.
+- [ ] Extend single-head attention into basic multi-head attention.
+- [ ] Implement the two-layer GELU feed-forward network.
+- [ ] Assemble LayerNorm, attention, MLP, and residuals into one transformer block.
+- [ ] Stack two transformer blocks into a decoder-only transformer.
+- [ ] Implement final LayerNorm and vocabulary projection.
+- [ ] Implement stable softmax cross-entropy loss.
+- [ ] Implement backward kernels for elementwise operations and reductions.
+- [ ] Implement backward kernels for matrix multiplication and linear layers.
+- [ ] Implement backward kernels for GELU and cross-entropy.
+- [ ] Implement backward kernels for embeddings and LayerNorm.
+- [ ] Implement the complete attention backward pass.
+- [ ] Implement parameter and gradient registration.
+- [ ] Numerically gradient-check every operation using finite differences.
+- [ ] Implement gradient clearing and basic SGD.
+- [ ] Train the model until it overfits one tiny batch.
+- [ ] Implement AdamW and replace SGD.
+- [ ] Train the model on a small text corpus.
+- [ ] Implement greedy autoregressive generation.
+- [ ] Add temperature and categorical token sampling.
+- [ ] Implement model checkpoint saving and loading.
+- [ ] Verify that a loaded checkpoint produces identical logits.
+- [ ] Add deterministic seeds and CPU-versus-GPU end-to-end tests.
+- [ ] Run CUDA memcheck and fix all memory and synchronization errors.
+- [ ] Generate recognizable text with the complete CUDA transformer.
+- [ ] Profile the working implementation before beginning optimization.
