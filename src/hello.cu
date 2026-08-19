@@ -7,6 +7,10 @@ __global__ void helloFromGpu() {
 
 int cuda_main() {
 	helloFromGpu<<<1,1>>>();
+	const cudaError_t error = cudaDeviceSynchronize();
+	if (error != cudaSuccess) {
+		fprintf(stderr, "CUDA error: %s\n", cudaGetErrorString(error));
+		return 1;
+	}
 	return 0;
 };
-

@@ -1,6 +1,8 @@
 #include <print>
 #include <meta>
 
+int cuda_main();
+
 enum Color { Red, Green, Blue };
 
 template <typename E> 
@@ -16,5 +18,5 @@ constexpr std::string_view enum_to_string(E val) {
 
 auto main() -> int {
 	std::println("Hello from the Color {}!", enum_to_string(Color::Red));
-	return 0;
+	return cuda_main();
 };
