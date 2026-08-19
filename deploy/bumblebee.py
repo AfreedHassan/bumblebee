@@ -31,12 +31,39 @@ image = (
     timeout=600,
     volumes={"/data": volume},
 )
-def run(command: str = "./build/bumblebee"):
+def run(command: str = "./build/bumblebee", branch: str = "main"):
     repo = "/data/bumblebee"
+
+    _ = subprocess.run(
+        ["git", "check-ref-format", "--branch", branch],
+        check=True,
+    )
 
     if os.path.isdir(f"{repo}/.git"):
         _ = subprocess.run(
-            ["git", "-C", repo, "pull", "--ff-only", "origin", "main"],
+            ["git", "-C", repo, "fetch", "origin", branch],
+            check=True,
+        )
+        switched = subprocess.run(
+            ["git", "-C", repo, "switch", branch],
+            check=False,
+        )
+        if switched.returncode != 0:
+            _ = subprocess.run(
+                [
+                    "git",
+                    "-C",
+                    repo,
+                    "switch",
+                    "--track",
+                    "-c",
+                    branch,
+                    f"origin/{branch}",
+                ],
+                check=True,
+            )
+        _ = subprocess.run(
+            ["git", "-C", repo, "merge", "--ff-only", f"origin/{branch}"],
             check=True,
         )
     else:
@@ -45,7 +72,7 @@ def run(command: str = "./build/bumblebee"):
                 "git",
                 "clone",
                 "--branch",
-                "main",
+                branch,
                 "https://github.com/AfreedHassan/bumblebee.git",
                 repo,
             ],
@@ -70,5 +97,5 @@ def run(command: str = "./build/bumblebee"):
 
 
 @app.local_entrypoint()
-def main(command: str = "./build/bumblebee"):
-    run.remote(command)
+def main(command: str = "./build/bumblebee", branch: str = "main"):
+    run.remote(command, branch)
