@@ -1,7 +1,7 @@
 TODO:
 - [x] Configure CMake for dependency-free C++ and CUDA builds.
-- [ ] Add CUDA error checking and device initialization.
-- [ ] Implement RAII host and GPU memory buffers.
+- [x] Add CUDA error checking and device initialization.
+- [x] Implement RAII host and GPU memory buffers.
 - [ ] Implement contiguous tensor metadata with shape, strides, dtype, and device.
 - [ ] Implement simple CPU tensor operations as correctness references.
 - [ ] Implement host-to-device and device-to-host tensor transfers.
