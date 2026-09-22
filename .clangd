@@ -1,0 +1,7 @@
+CompileFlags:
+  CompilationDatabase: build
+  Remove:
+    - -forward-unknown-to-host-compiler
+    - --options-file
+    - --generate-code=*
+    - --use_fast_math
